@@ -133,12 +133,12 @@ function check_product()
         return
     fi
 
-    if (echo -n $1 | grep -q -e "^du_") ; then
-       DU_BUILD=$(echo -n $1 | sed -e 's/^du_//g')
+    if (echo -n $1 | grep -q -e "^jmz_") ; then
+       JMZ_BUILD=$(echo -n $1 | sed -e 's/^jmz_//g')
     else
-       DU_BUILD=
+       JMZ_BUILD=
     fi
-    export DU_BUILD
+    export JMZ_BUILD
 
         TARGET_PRODUCT=$1 \
         TARGET_BUILD_VARIANT= \
@@ -538,17 +538,19 @@ function print_lunch_menu()
     echo ""
     tput setaf 1;
     tput bold;
-    echo "·▄▄▄▄  ▪  ▄▄▄  ▄▄▄▄▄ ▄· ▄▌    ▄• ▄▌ ▐ ▄ ▪   ▄▄·       ▄▄▄   ▐ ▄ .▄▄ · "
-    echo "██▪ ██ ██ ▀▄ █·•██  ▐█▪██▌    █▪██▌•█▌▐███ ▐█ ▌▪▪     ▀▄ █·•█▌▐█▐█ ▀. "
-    echo "▐█· ▐█▌▐█·▐▀▀▄  ▐█.▪▐█▌▐█▪    █▌▐█▌▐█▐▐▌▐█·██ ▄▄ ▄█▀▄ ▐▀▀▄ ▐█▐▐▌▄▀▀▀█▄"
-    echo "██. ██ ▐█▌▐█•█▌ ▐█▌· ▐█▀·.    ▐█▄█▌██▐█▌▐█▌▐███▌▐█▌.▐▌▐█•█▌██▐█▌▐█▄▪▐█"
-    echo "▀▀▀▀▀• ▀▀▀.▀  ▀ ▀▀▀   ▀ •      ▀▀▀ ▀▀ █▪▀▀▀·▀▀▀  ▀█▄▀▪.▀  ▀▀▀ █▪ ▀▀▀▀ "
+    echo ""
+    echo "                               ██╗███╗   ███╗███████╗                                  "
+    echo "                               ██║████╗ ████║╚══███╔╝                                  "
+    echo "                               ██║██╔████╔██║  ███╔╝                                   "
+    echo "                          ██   ██║██║╚██╔╝██║ ███╔╝                                    "
+    echo "                          ╚█████╔╝██║ ╚═╝ ██║███████╗                                  "
+    echo "                           ╚════╝ ╚═╝     ╚═╝╚══════╝                                  "
     tput sgr0;
     echo ""
-    echo "                      Welcome to the device menu                      "
+    echo "                           Welcome to the device menu                      "
     echo ""
     tput bold;
-    echo "     Below are all the devices currently available to be compiled     "
+    echo "            Below are all the devices currently available to be compiled     "
     tput sgr0;
     echo ""
 
@@ -578,10 +580,10 @@ function brunch()
 function breakfast()
 {
     target=$1
-    DU_DEVICES_ONLY="true"
+    JMZ_DEVICES_ONLY="true"
     unset LUNCH_MENU_CHOICES
     add_lunch_combo full-eng
-    for f in `/bin/ls vendor/du/vendorsetup.sh 2> /dev/null`
+    for f in `/bin/ls vendor/jmz/vendorsetup.sh 2> /dev/null`
         do
             echo "including $f"
             . $f
@@ -597,8 +599,8 @@ function breakfast()
             # A buildtype was specified, assume a full device name
             lunch $target
         else
-            # This is probably just the du model name
-            lunch du_$target-userdebug
+            # This is probably just the jmz model name
+            lunch jmz_$target-userdebug
         fi
     fi
     return $?

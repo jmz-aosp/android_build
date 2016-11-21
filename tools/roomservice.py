@@ -88,7 +88,7 @@ def indent(elem, level=0):
 
 def get_from_manifest(devicename):
     try:
-        lm = ElementTree.parse(".repo/local_manifests/du_manifest.xml")
+        lm = ElementTree.parse(".repo/local_manifests/jmz_manifest.xml")
         lm = lm.getroot()
     except:
         lm = ElementTree.Element("manifest")
@@ -112,7 +112,7 @@ def get_from_manifest(devicename):
 
 def is_in_manifest(projectname, branch):
     try:
-        lm = ElementTree.parse(".repo/local_manifests/du_manifest.xml")
+        lm = ElementTree.parse(".repo/local_manifests/jmz_manifest.xml")
         lm = lm.getroot()
     except:
         lm = ElementTree.Element("manifest")
@@ -125,7 +125,7 @@ def is_in_manifest(projectname, branch):
 
 def add_to_manifest_dependencies(repositories):
     try:
-        lm = ElementTree.parse(".repo/local_manifests/du_manifest.xml")
+        lm = ElementTree.parse(".repo/local_manifests/jmz_manifest.xml")
         lm = lm.getroot()
     except:
         lm = ElementTree.Element("manifest")
@@ -158,13 +158,13 @@ def add_to_manifest_dependencies(repositories):
     raw_xml = ElementTree.tostring(lm)
     raw_xml = '<?xml version="1.0" encoding="UTF-8"?>\n' + raw_xml
 
-    f = open('.repo/local_manifests/du_manifest.xml', 'w')
+    f = open('.repo/local_manifests/jmz_manifest.xml', 'w')
     f.write(raw_xml)
     f.close()
 
 def add_to_manifest(repositories):
     try:
-        lm = ElementTree.parse(".repo/local_manifests/du_manifest.xml")
+        lm = ElementTree.parse(".repo/local_manifests/jmz_manifest.xml")
         lm = lm.getroot()
     except:
         lm = ElementTree.Element("manifest")
@@ -194,7 +194,7 @@ def add_to_manifest(repositories):
     raw_xml = ElementTree.tostring(lm)
     raw_xml = '<?xml version="1.0" encoding="UTF-8"?>\n' + raw_xml
 
-    f = open('.repo/local_manifests/du_manifest.xml', 'w')
+    f = open('.repo/local_manifests/jmz_manifest.xml', 'w')
     f.write(raw_xml)
     f.close()
 
@@ -253,4 +253,4 @@ else:
             print "Done"
             sys.exit()
 
-print "Repository for %s not found in the DU Github repository list. If this is in error, you may need to manually add it to .repo/local_manifests/du_manifest.xml" % device
+print "Repository for %s not found in the DU Github repository list. If this is in error, you may need to manually add it to .repo/local_manifests/jmz_manifest.xml" % device
